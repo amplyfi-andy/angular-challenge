@@ -1,0 +1,32 @@
+<ng-container *ngIf="document">
+<h2><b>{{document.id}}</b>: {{document.m_szDocTitle}}</h2>
+<a href="{{document.m_szSrcUrl}}">Visit document</a>
+<p class="lead">{{document.m_szDocSumamry}}</p>
+<ul *ngIf="document">
+  <li *ngIf="document.m_szYear"><span>Year:</span> {{document.m_szYear}}</li>
+  <li *ngIf="document.m_szGeo1"><span>Country:</span> {{document.m_szGeo1}}</li>
+  <li *ngIf="document.m_Topics"><span>Topics:</span> {{document.m_Topics}}</li>
+  <li *ngIf="document.m_Industry"><span>Industries:</span> {{document.m_Industry}}</li>
+  <li *ngIf="document.m_Technology"><span>Technologies:</span> {{document.m_Technology}}</li>
+  <li *ngIf="document.m_iDocBodyWordCnt"><span>Word count:</span> {{document.m_iDocBodyWordCnt}}</li>
+  <li *ngIf="document.m_Places"><span>Places:</span> {{document.m_Places}}</li>
+  <li *ngIf="document.m_Companies"><span>Related companies:</span> {{document.m_Companies}}</li>
+  <li *ngIf="document.m_People"><span>Related people:</span> {{document.m_People}}</li>
+  <li *ngIf="document.m_SocialTags"><span>Social Tags:</span> {{document.m_SocialTags}}</li>
+</ul>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Bigrams</h3>
+    <ul>
+      <li *ngFor="let bigram of document.m_BiGrams; let i = index">{{bigram}} ({{document.m_BiCnt[i]}})</li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <h3>Trigrams</h3>
+    <ul>
+      <li *ngFor="let trigram of document.m_TriGrams; let i = index">{{trigram}} ({{document.m_TriCnt[i]}})</li>
+    </ul>
+  </div>
+</div>
+</ng-container>

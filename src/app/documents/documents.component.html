@@ -1,0 +1,14 @@
+<aside class="col-sm-4">
+  <h3>All documents</h3>
+  <ul *ngIf="documents">
+    <li *ngFor="let doc of documents">
+      <a [routerLink]="['/document', doc?.id]">{{doc?.m_szDocTitle}}</a>
+    </li>
+  </ul>
+  <ng-template #noData>Loading data...</ng-template>
+</aside>
+<main class="col-sm-8">
+<div>
+  <!-- Open the documents within this element -->
+</div>
+</main>

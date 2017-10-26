@@ -1,0 +1,26 @@
+<aside class="col-sm-3">
+<h3>Search ngrams</h3>
+
+    <div class="form-group">
+      <input class="form-control" [(ngModel)]="keywordFilter">
+    </div>
+    <ul>
+      <li *ngFor="let result of ngrams | docfilter:keywordFilter"><a (click)="selectNgram(result)">{{result.keyword}}</a></li>
+    </ul>
+    <h3>Most popular bigrams</h3>
+    <ul >
+      <li *ngFor="let bigram of ngrams.bigrams | limit"><a (click)="selectNgram(bigram)">{{bigram.keyword}} ({{bigram.count}} documents)</a></li>
+    </ul>
+    <h3>Most popular trigrams</h3>
+    <ul>
+      <li *ngFor="let trigram of ngrams.trigrams | limit"><a (click)="selectNgram(trigram)">{{trigram.keyword}} ({{trigram.count}} documents)</a></li>
+    </ul>
+
+</aside>
+<main class="col-sm-9">
+  <h3>Results</h3>
+  <ul *ngIf="selectedNgram" class="results">
+    <li *ngFor="let document of selectedNgram.documentIDs"><a [routerLink]="['/document', document.id]">{{document.m_szDocTitle}}</a></li>
+  </ul>
+</main>
+
